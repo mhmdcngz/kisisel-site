@@ -1,0 +1,414 @@
+/* Modern Dark UI Variables */
+:root {
+    --bg-color: #0f172a;
+    /* Slate 900 */
+    --card-bg: #1e293b;
+    /* Slate 800 */
+    --text-primary: #f8fafc;
+    /* Slate 50 */
+    --text-secondary: #94a3b8;
+    /* Slate 400 */
+    --accent-blue: #3b82f6;
+    /* Blue 500 */
+    --border-color: #334155;
+    /* Slate 700 */
+    --dot-color: #334155;
+    --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+    /* Dot Grid Pattern */
+    background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
+    background-size: 30px 30px;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Section Utilities */
+.section {
+    padding: 5rem 1rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 3rem;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--accent-blue);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* Navbar (Centered) */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    /* Center Horizontal */
+    padding: 1.5rem 0;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.nav-links a:hover {
+    color: var(--accent-blue);
+}
+
+/* Hero Section */
+.hero-section {
+    min-height: 90vh;
+    /* Almost full screen */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 80px;
+    /* Offset fixed header */
+}
+
+.hero-title {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    letter-spacing: -1px;
+}
+
+.highlight {
+    color: var(--accent-blue);
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+}
+
+.btn-outline {
+    padding: 0.8rem 2.5rem;
+    border: 2px solid var(--accent-blue);
+    color: var(--accent-blue);
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.btn-outline:hover {
+    background: var(--accent-blue);
+    color: #fff;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+}
+
+/* Skills (Simple Card) */
+/* Skills (Simple Card) */
+.skills-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 3rem;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 300px;
+    transition: transform 0.3s ease;
+}
+
+.skills-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-blue);
+}
+
+.skill-icon {
+    font-size: 4rem;
+    color: #fff;
+    /* White icon as requested or brand color */
+    margin-bottom: 1rem;
+}
+
+/* Timeline (Education) */
+/* Timeline (Vertical Structure) */
+.timeline-container {
+    max-width: 700px;
+    margin: 0 auto;
+    border-left: 2px solid var(--border-color);
+    /* The Vertical Line */
+    padding-left: 2rem;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.timeline-item {
+    position: relative;
+    /* No padding-bottom needed, gap handles spacing */
+}
+
+/* The Dot (Visual Marker) */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2.6rem;
+    /* Adjust based on padding + border */
+    top: 5px;
+    /* Aligned with the top of the content */
+    width: 14px;
+    height: 14px;
+    background: var(--accent-blue);
+    border-radius: 50%;
+    border: 3px solid var(--bg-color);
+    /* Creates "gap" from line */
+    box-shadow: 0 0 0 1px var(--accent-blue);
+    /* Optional glow ring */
+}
+
+/* Removed old .timeline-marker HTML element style */
+
+.timeline-date {
+    font-size: 0.9rem;
+    color: var(--accent-blue);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.timeline-org {
+    color: var(--text-secondary);
+}
+
+/* Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 2.5rem;
+    border-radius: 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-blue);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.project-icon {
+    font-size: 2.5rem;
+    color: var(--accent-blue);
+    margin-bottom: 1.5rem;
+    background: rgba(59, 130, 246, 0.1);
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.project-title {
+    font-size: 1.4rem;
+    margin-bottom: 0.2rem;
+}
+
+.project-subtitle {
+    color: var(--accent-blue);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.project-desc {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* Contact Section (Redesigned) */
+.contact-section {
+    padding-bottom: 3rem;
+}
+
+/* Hover Reveal Button Logic */
+/* Hover Reveal Button Logic - Removed */
+.contact-subtitle {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding-bottom: 2rem;
+}
+
+.btn-mail,
+.btn-linkedin {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    color: #fff;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-mail {
+    background-color: #4f46e5;
+}
+
+.btn-mail:hover {
+    background-color: #4338ca;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(79, 70, 229, 0.4);
+}
+
+.btn-linkedin {
+    background-color: #0077b5;
+}
+
+.btn-linkedin:hover {
+    background-color: #006097;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 119, 181, 0.4);
+}
+
+/* Old Hover Styles Removed */
+
+/* Footer & Socials */
+/* Footer (Split Layout & Scroll Top) */
+.footer {
+    border-top: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    padding: 0;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 1rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.footer-left p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.footer-right {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.footer-right a {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.footer-right a:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+/* Scroll Top Button Removed */
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-links {
+        gap: 1rem;
+        font-size: 0.8rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .section-title::after {
+        margin: 10px auto;
+        /* Keep centered on mobile */
+    }
+}
