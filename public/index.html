@@ -219,6 +219,18 @@
             color: var(--text-main);
         }
 
+        .skill-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .skill-tag {
+            font-size: 0.8rem !important;
+            color: var(--text-muted) !important;
+            font-weight: 400 !important;
+        }
+
         /* --- KARİYER --- */
         .timeline {
             position: relative;
@@ -292,13 +304,7 @@
             border-color: var(--text-muted);
         }
 
-        /* İçeriklerin Silikleşmesi */
-        .project-card:hover .project-icon,
-        .project-card:hover h3,
-        .project-card:hover p {
-            opacity: 0.4;
-            filter: blur(1px);
-        }
+
 
         .project-icon {
             font-size: 2.5rem;
@@ -326,25 +332,23 @@
             position: absolute;
             bottom: 30px;
             left: 50%;
-            transform: translateX(-50%) translateY(50px);
-            /* Gizli (Aşağıda) */
+            transform: translateX(-50%);
+            /* Sabit Görünürlük */
             background-color: var(--accent);
             color: #fff;
             padding: 12px 30px;
             border-radius: 50px;
             font-weight: 600;
             text-decoration: none;
-            opacity: 0;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            /* Yaylanma */
+            opacity: 1;
+            transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             white-space: nowrap;
         }
 
-        .project-card:hover .project-btn {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-            /* Ortaya Çıkış */
+        .project-btn:hover {
+            transform: translateX(-50%) scale(1.05);
+            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.4);
         }
 
         /* --- İLETİŞİM --- */
@@ -547,7 +551,10 @@
             <div class="skills-wrapper">
                 <div class="skill-card">
                     <i class="fa-brands fa-java"></i>
-                    <span>Java</span>
+                    <div class="skill-info">
+                        <span>Java</span>
+                        <span class="skill-tag">OOP</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -589,6 +596,16 @@
                     </a>
                 </div>
 
+                <div class="project-card">
+                    <i class="fa-solid fa-dungeon project-icon"></i>
+                    <h3>Macera Oyunu</h3>
+                    <p>Java ve Nesne Yönelimli Programlama (OOP) prensipleri kullanılarak geliştirilmiş, canavarlarla
+                        savaşıp eşyalar topladığınız metin tabanlı bir RPG oyunu.</p>
+
+                    <a href="https://github.com/mhmdcngz/Macera-Oyunu" target="_blank" class="project-btn">
+                        Projeyi İncele <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
         </section>
 

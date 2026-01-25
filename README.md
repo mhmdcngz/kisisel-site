@@ -1,14 +1,56 @@
-# Modern Portfolio (Light/Dark Mode)
+# Muhammed Cengiz - Kişisel Portfolyo Web Sitesi
 
-Aydınlık ve Karanlık mod seçeneklerine sahip, modern kişisel portfolyo.
+Modern web teknolojileri kullanılarak geliştirilmiş, minimalist ve şık bir kişisel portfolyo web sitesi. Aydınlık ve Karanlık (Light/Dark) mod seçenekleri sunan, tamamen responsive bir tasarıma sahiptir.
 
-## Özellikler
+## 🌟 Özellikler
 
-- **Tema Desteği**: Header'daki güneş/ay ikonu ile Light ve Dark mod arasında geçiş yapabilirsiniz. Tercihiniz tarayıcı hafızasına (localStorage) kaydedilir.
-- **İletişim**: Mail ve LinkedIn butonları ile doğrudan erişim.
-- **Kariyer & Projeler**: Detaylı zaman çizelgesi ve proje kartları.
+*   **Tema Yönetimi:** Kullanıcı tercihine göre değişebilen ve tarayıcı hafızasında (localStorage) saklanan Aydınlık/Karanlık mod.
+*   **Responsive Tasarım:** Mobil, tablet ve masaüstü cihazlarla tam uyumlu arayüz.
+*   **Modern Arayüz:**
+    *   Yumuşak geçiş efektleri (Transitions).
+    *   Cam efekti (Glassmorphism) kullanan yapışkan header.
+    *   Nokta ızgara (Dot grid) arka plan deseni.
+*   **Proje Kartları:** Özel hover efektleri ve sabit aksiyon butonları içeren detaylı proje sunumu.
+*   **İletişim Entegrasyonu:** Mail ve LinkedIn için özel tasarlanmış hızlı erişim butonları.
 
-## Kurulum
+## 🛠 Kullanılan Teknolojiler
 
-1. Klasörü indirin.
-2. `index.html` dosyasını tarayıcınızda açın.
+Bu proje herhangi bir framework kullanılmadan, saf (Vanilla) teknolojilerle geliştirilmiştir:
+
+*   **HTML5:** Semantik yapı.
+*   **CSS3:**
+    *   CSS Değişkenleri (Variables) ile tema yönetimi.
+    *   Flexbox & Grid Layout.
+    *   Keyframe animasyonları ve efektler.
+*   **JavaScript (ES6+):**
+    *   DOM manipülasyonu.
+    *   LocalStorage ile tema verisinin saklanması.
+    *   Scroll olayları ve dinamik UI güncellemeleri.
+
+## 🚀 Kurulum ve Kullanım
+
+Projeyi yerel makinenizde çalıştırmak için:
+
+1.  Bu repoyu klonlayın veya zip olarak indirin.
+2.  Klasör içerisindeki `index.html` dosyasını herhangi bir modern web tarayıcısında (Chrome, Firefox, Safari vb.) açın.
+3.  Hepsi bu kadar! Site çalışmaya başlayacaktır.
+
+## 📂 Dosya Yapısı
+
+```
+/
+├── public/
+│   ├── index.html      # Ana HTML dosyası (Tüm yapı buradadır)
+│   ├── favicon.ico     # Site ikonu
+│   ├── css/            # (Opsiyonel) Harici stil dosyaları
+│   └── js/             # (Opsiyonel) Harici script dosyaları
+└── README.md           # Proje dokümantasyonu
+```
+
+## 📬 İletişim
+
+*   **LinkedIn:** [Muhammed Cengiz](https://www.linkedin.com/in/mhmdcngz)
+*   **Mail:** [mhmdcngz@outlook.com](mailto:mhmdcngz@outlook.com)
+
+---
+© 2026 Muhammed Cengiz. Tüm hakları saklıdır.
