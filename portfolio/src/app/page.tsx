@@ -217,8 +217,8 @@ function Skills() {
 
 function Projects() {
   const projects = [
-    { title: "Java ATM Simülasyonu", description: "GUI (Arayüz) olmadan; tamamen OOP (Nesne Yönelimli Programlama) prensipleriyle tasarlanmış, bakiye yönetimi ve kullanıcı güvenliği sağlayan backend simülasyonu.", tags: ["Java SE", "Authentication", "Input Validation", "Clean Code"], github: "#" },
-    { title: "Java Macera Oyunu", description: "Java ve Nesne Yönelimli Programlama (OOP) prensipleri kullanılarak geliştirilmiş, canavarlarla savaşıp eşyalar topladığınız metin tabanlı bir RPG oyunu.", tags: ["OOP", "Polymorphism", "Inheritance", "Abstract Classes"], github: "#" }
+    { title: "ATM Simülasyonu (Java)", description: "GUI (Arayüz) olmadan; tamamen OOP (Nesne Yönelimli Programlama) prensipleriyle tasarlanmış, bakiye yönetimi ve kullanıcı güvenliği sağlayan backend simülasyonu.", tags: ["Java SE", "Authentication", "Input Validation", "Clean Code"], github: "https://github.com/mhmdcngz/ATM-java" },
+    { title: "Macera Oyunu (Java)", description: "Java ve Nesne Yönelimli Programlama (OOP) prensipleri kullanılarak geliştirilmiş, canavarlarla savaşıp eşyalar topladığınız metin tabanlı bir RPG oyunu.", tags: ["OOP", "Polymorphism", "Inheritance", "Abstract Classes"], github: "https://github.com/mhmdcngz/Macera-Oyunu" }
   ];
 
   return (
