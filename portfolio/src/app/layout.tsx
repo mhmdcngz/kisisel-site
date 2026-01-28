@@ -14,7 +14,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: "Muhammed Cengiz | Software Developer",
-  description: "Java Developer & Cyber Security Enthusiast",
+  description: "Java Developer",
 };
 
 import { Navbar } from "@/components/layout/Navbar";
