@@ -34,43 +34,43 @@ export default async function Home() {
   const aboutText = await getAboutText();
 
   return (
-    <main className="flex flex-col min-h-screen bg-gray-950 selection:bg-blue-500/30 selection:text-blue-200">
+    <main className="flex flex-col min-h-screen bg-slate-950 selection:bg-blue-500/30 selection:text-blue-200">
       <Navbar />
       <Hero aboutText={aboutText} />
 
       {/* YETENEKLER BÖLÜMÜ */}
-      <section id="skills" className="py-20 px-6 max-w-6xl mx-auto border-t border-gray-900">
+      <section id="skills" className="py-20 px-6 max-w-6xl mx-auto border-t border-slate-900/50">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent mb-4">
             Teknik Yeteneklerim
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <p className="text-slate-400 max-w-2xl mx-auto">
             Yazılım geliştirme sürecinde kullandığım teknolojiler ve yetkinlik seviyelerim.
           </p>
         </div>
 
         {skills.length === 0 ? (
-          <div className="text-center p-8 border border-gray-800 border-dashed rounded-xl text-gray-500">
+          <div className="text-center p-8 border border-slate-800 border-dashed rounded-xl text-slate-500">
             Henüz yetenek girişi yapılmamış. Admin panelinden ekleyebilirsiniz.
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {skills.map((skill: any) => (
-              <div key={skill.id} className="bg-gray-900/40 backdrop-blur-sm border border-gray-800 p-6 rounded-2xl hover:border-blue-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/5 group">
+              <div key={skill.id} className="bg-slate-900/60 backdrop-blur-sm border border-slate-800 p-6 rounded-2xl hover:border-blue-500/40 transition-all duration-300 hover:shadow-[0_0_20px_rgba(59,130,246,0.1)] group h-full flex flex-col">
                 <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
+                  <h3 className="text-2xl font-bold text-slate-100 group-hover:text-blue-400 transition-colors">
                     {skill.name}
                   </h3>
-                  <span className="text-xs font-bold font-mono text-blue-400 bg-blue-400/10 px-2 py-1 rounded border border-blue-400/20">
+                  <span className="text-xs font-bold font-mono text-blue-400 bg-blue-500/5 px-2 py-1 rounded border border-blue-500/20">
                     %{skill.proficiency}
                   </span>
                 </div>
-                <p className="text-gray-400 text-sm mb-6 leading-relaxed h-12 line-clamp-2">
+                <p className="text-slate-400 text-sm mb-6 leading-relaxed flex-1">
                   {skill.description}
                 </p>
 
                 {/* Progress Bar */}
-                <div className="w-full bg-gray-800 rounded-full h-2 overflow-hidden">
+                <div className="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
                   <div
                     className="bg-gradient-to-r from-blue-600 to-purple-600 h-full rounded-full shadow-[0_0_10px_rgba(59,130,246,0.5)]"
                     style={{ width: `${skill.proficiency}%` }}

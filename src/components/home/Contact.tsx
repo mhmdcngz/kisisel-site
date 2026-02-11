@@ -1,15 +1,14 @@
 'use client';
 
 import { useState } from "react";
-import { useForm, ValidationError } from '@formspree/react';
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Mail, Github, Linkedin, Check, Copy, Send, Loader2 } from "lucide-react";
+import { Mail, Github, Linkedin, Check, Copy } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/Card";
+import ContactForm from "@/components/ContactForm";
 
 export function Contact() {
-    const [state, handleSubmit] = useForm("xvzrgqvo");
     const [copied, setCopied] = useState(false);
 
     const handleCopy = () => {
@@ -81,64 +80,7 @@ export function Contact() {
                             <CardDescription>Aşağıdaki formu doldurarak bana doğrudan mesaj gönderebilirsiniz.</CardDescription>
                         </CardHeader>
                         <CardContent>
-                            {state.succeeded ? (
-                                <motion.div
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    className="flex flex-col items-center justify-center py-8 text-center space-y-4"
-                                >
-                                    <div className="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center">
-                                        <Check className="w-8 h-8 text-green-500" />
-                                    </div>
-                                    <h3 className="text-xl font-bold text-slate-100">Mesajınız Alındı!</h3>
-                                    <p className="text-slate-400 max-w-xs">En kısa sürede size dönüş yapacağım. İletişime geçtiğiniz için teşekkürler.</p>
-                                </motion.div>
-                            ) : (
-                                <form onSubmit={handleSubmit} className="space-y-4">
-                                    <div className="space-y-2">
-                                        <label htmlFor="name" className="text-sm font-medium text-slate-400">Adınız Soyadınız</label>
-                                        <input
-                                            id="name"
-                                            name="name"
-                                            type="text"
-                                            required
-                                            className="flex h-10 w-full rounded-md border border-slate-800 bg-slate-950/50 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/50 transition-all"
-                                            placeholder="Ahmet Yılmaz"
-                                        />
-                                        <ValidationError prefix="Name" field="name" errors={state.errors} className="text-red-500 text-xs" />
-                                    </div>
-                                    <div className="space-y-2">
-                                        <label htmlFor="email" className="text-sm font-medium text-slate-400">E-posta Adresiniz</label>
-                                        <input
-                                            id="email"
-                                            name="email"
-                                            type="email"
-                                            required
-                                            className="flex h-10 w-full rounded-md border border-slate-800 bg-slate-950/50 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/50 transition-all"
-                                            placeholder="ahmet@ornek.com"
-                                        />
-                                        <ValidationError prefix="Email" field="email" errors={state.errors} className="text-red-500 text-xs" />
-                                    </div>
-                                    <div className="space-y-2">
-                                        <label htmlFor="message" className="text-sm font-medium text-slate-400">Mesajınız</label>
-                                        <textarea
-                                            id="message"
-                                            name="message"
-                                            required
-                                            className="flex min-h-[120px] w-full rounded-md border border-slate-800 bg-slate-950/50 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/50 transition-all resize-none"
-                                            placeholder="Projenizden bahsedin..."
-                                        />
-                                        <ValidationError prefix="Message" field="message" errors={state.errors} className="text-red-500 text-xs" />
-                                    </div>
-                                    <Button disabled={state.submitting} type="submit" className="w-full h-11 bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-500/20 group disabled:opacity-70 disabled:cursor-not-allowed">
-                                        {state.submitting ? (
-                                            <>Gönderiliyor... <Loader2 className="w-4 h-4 ml-2 animate-spin" /></>
-                                        ) : (
-                                            <>Gönder <Send className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" /></>
-                                        )}
-                                    </Button>
-                                </form>
-                            )}
+                            <ContactForm />
                         </CardContent>
                     </Card>
 

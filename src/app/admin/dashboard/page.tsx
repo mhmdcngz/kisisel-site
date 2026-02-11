@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 
 export default function AdminDashboard() {
     const router = useRouter();
-    const [activeTab, setActiveTab] = useState<'projects' | 'skills' | 'about'>('projects');
+    const [activeTab, setActiveTab] = useState<'projects' | 'skills' | 'about' | 'messages'>('projects');
 
     // --- PROJE STATE'LERİ ---
     const [projects, setProjects] = useState<any[]>([]);
@@ -23,11 +23,15 @@ export default function AdminDashboard() {
     // --- HAKKIMDA STATE'LERİ ---
     const [aboutText, setAboutText] = useState('');
 
+    // --- MESAJLAR STATE'LERİ ---
+    const [messages, setMessages] = useState<any[]>([]);
+
     // --- VERİ ÇEKME ---
     useEffect(() => {
         fetchProjects();
         fetchSkills();
         fetchAbout();
+        fetchMessages();
     }, []);
 
     const fetchProjects = async () => {
@@ -48,10 +52,36 @@ export default function AdminDashboard() {
         }
     };
 
+    const fetchMessages = async () => {
+        const res = await fetch('/api/admin/messages');
+        if (res.ok) setMessages(await res.json());
+    };
+
     const handleLogout = async () => {
         await fetch('/api/admin/logout', { method: 'POST' });
         router.push('/admin/login');
     };
+
+    // --- MESAJ FONKSİYONLARI ---
+    const handleMarkAsRead = async (id: number) => {
+        const res = await fetch('/api/admin/messages', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id })
+        });
+        if (res.ok) fetchMessages();
+    };
+
+    const handleDeleteMessage = async (id: number) => {
+        if (!confirm('Bu mesajı silmek istediğine emin misin?')) return;
+        const res = await fetch('/api/admin/messages', {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id })
+        });
+        if (res.ok) fetchMessages();
+    };
+
 
     // --- PROJE FONKSİYONLARI ---
     const handleProjectSubmit = async (e: React.FormEvent) => {
@@ -139,7 +169,7 @@ export default function AdminDashboard() {
                 </div>
 
                 {/* SEKME BUTONLARI */}
-                <div className="flex gap-4 mb-8">
+                <div className="flex gap-4 mb-8 flex-wrap">
                     <button
                         onClick={() => setActiveTab('projects')}
                         className={`px-6 py-2 rounded-lg font-medium transition-all ${activeTab === 'projects' ? 'bg-blue-600 text-white' : 'bg-gray-900 text-gray-400 hover:bg-gray-800'}`}
@@ -157,6 +187,12 @@ export default function AdminDashboard() {
                         className={`px-6 py-2 rounded-lg font-medium transition-all ${activeTab === 'about' ? 'bg-cyan-600 text-white' : 'bg-gray-900 text-gray-400 hover:bg-gray-800'}`}
                     >
                         📝 Hakkımda
+                    </button>
+                    <button
+                        onClick={() => setActiveTab('messages')}
+                        className={`px-6 py-2 rounded-lg font-medium transition-all ${activeTab === 'messages' ? 'bg-green-600 text-white' : 'bg-gray-900 text-gray-400 hover:bg-gray-800'}`}
+                    >
+                        📩 Mesajlar
                     </button>
                 </div>
 
@@ -264,6 +300,39 @@ export default function AdminDashboard() {
                                 Değişiklikleri Kaydet
                             </button>
                         </form>
+                    </div>
+                )}
+
+                {/* --- MESAJLAR SEKMESİ --- */}
+                {activeTab === 'messages' && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {messages.length === 0 ? (
+                            <p className="col-span-full text-center text-gray-500 py-10">Henüz hiç mesajınız yok.</p>
+                        ) : (
+                            messages.map(msg => (
+                                <div key={msg.id} className={`bg-gray-900 p-5 rounded-lg border border-gray-800 relative ${!msg.is_read ? 'border-l-4 border-l-blue-500' : 'opacity-75'}`}>
+                                    <div className="flex justify-between items-start mb-3">
+                                        <h3 className="font-bold text-white text-lg">{msg.name}</h3>
+                                        <span className="text-xs text-gray-500 font-mono">
+                                            {new Date(msg.created_at).toLocaleDateString('tr-TR')}
+                                        </span>
+                                    </div>
+                                    <p className="text-sm text-blue-400 mb-3">{msg.email}</p>
+                                    <p className="text-gray-300 text-sm mb-4 whitespace-pre-wrap max-h-40 overflow-y-auto">{msg.message}</p>
+
+                                    <div className="flex justify-end gap-2 pt-3 border-t border-gray-800/50">
+                                        {!msg.is_read && (
+                                            <button onClick={() => handleMarkAsRead(msg.id)} className="text-green-400 text-xs px-3 py-1.5 bg-green-500/10 rounded hover:bg-green-500/20 transition-colors">
+                                                ✓ Okundu Yap
+                                            </button>
+                                        )}
+                                        <button onClick={() => handleDeleteMessage(msg.id)} className="text-red-400 text-xs px-3 py-1.5 bg-red-500/10 rounded hover:bg-red-500/20 transition-colors">
+                                            🗑 Sil
+                                        </button>
+                                    </div>
+                                </div>
+                            ))
+                        )}
                     </div>
                 )}
             </div>
